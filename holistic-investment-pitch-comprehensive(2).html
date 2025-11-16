@@ -1,0 +1,2275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holistic Medical Supply - Investment Proposal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-success: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);
+            --gradient-danger: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+        
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .stat-box {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+            min-width: 180px;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #64748b;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .comparison-card {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .comparison-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+        }
+        
+        .comparison-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+        }
+        
+        .card-losing::before {
+            background: var(--gradient-danger);
+        }
+        
+        .card-winning::before {
+            background: var(--gradient-success);
+        }
+        
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-losing .card-icon {
+            background: linear-gradient(135deg, #fef3c7 0%, #fca5a5 100%);
+        }
+        
+        .card-winning .card-icon {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        }
+        
+        .card-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+        }
+        
+        .card-losing .card-amount {
+            color: var(--danger);
+        }
+        
+        .card-winning .card-amount {
+            color: var(--secondary);
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.05rem;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .card-losing .feature-list li::before {
+            color: var(--danger);
+        }
+        
+        .card-winning .feature-list li::before {
+            color: var(--secondary);
+        }
+        
+        .outcome-box {
+            background: #f1f5f9;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            border-left: 4px solid;
+        }
+        
+        .card-losing .outcome-box {
+            border-color: var(--danger);
+        }
+        
+        .card-winning .outcome-box {
+            border-color: var(--secondary);
+        }
+        
+        .outcome-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+        }
+        
+        .outcome-text {
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .problems-section {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .problem-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .problem-number {
+            font-size: 3rem;
+            font-weight: 800;
+            opacity: 0.3;
+            margin-bottom: 1rem;
+        }
+        
+        .problem-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #fbbf24;
+        }
+        
+        .problem-description {
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+        
+        .example-box {
+            background: rgba(255,255,255,0.08);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .example-title {
+            font-weight: 600;
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+        
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .calc-total {
+            border-top: 2px solid rgba(255,255,255,0.2);
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .calc-loss {
+            color: #fca5a5;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+        
+        .financial-table {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            margin: 3rem 0;
+        }
+        
+        .financial-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .financial-table th {
+            background: var(--gradient-1);
+            color: white;
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .financial-table td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .financial-table tr:hover {
+            background: #f8fafc;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 3rem 0;
+            border-left: 6px solid #f59e0b;
+        }
+        
+        .highlight-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #92400e;
+        }
+        
+        .highlight-text {
+            font-size: 1.1rem;
+            color: #78350f;
+            line-height: 1.8;
+        }
+        
+        .urgency-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 3rem 0;
+            border-left: 6px solid #dc2626;
+        }
+        
+        .urgency-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #7f1d1d;
+        }
+        
+        .urgency-text {
+            font-size: 1.1rem;
+            color: #991b1b;
+            line-height: 1.8;
+        }
+        
+        .cta-section {
+            background: var(--gradient-1);
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+        
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin-bottom: 2rem;
+        }
+        
+        .cta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto;
+        }
+        
+        .cta-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .cta-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cta-label {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        
+        .investment-breakdown {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 2px solid #f1f5f9;
+        }
+        
+        .breakdown-item:last-child {
+            border-bottom: none;
+            border-top: 3px solid #667eea;
+            margin-top: 1rem;
+            padding-top: 2rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .breakdown-label {
+            font-size: 1.1rem;
+        }
+        
+        .breakdown-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .comparison-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .chart-column {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .chart-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .chart-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .success-factors {
+            background: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);
+            color: white;
+            padding: 6rem 2rem;
+        }
+        
+        .factor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .factor-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .factor-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .factor-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .factor-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .factor-description {
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+        
+        .roi-highlight {
+            background: var(--gradient-success);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 3rem 0;
+            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.3);
+        }
+        
+        .roi-number {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+        
+        .roi-label {
+            font-size: 1.5rem;
+            opacity: 0.95;
+        }
+        
+        .timeline-box {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-item {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+        
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+        
+        .timeline-date {
+            font-weight: 700;
+            color: var(--primary);
+            min-width: 120px;
+            font-size: 1.1rem;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            font-size: 1.05rem;
+        }
+        
+        @media (max-width: 768px) {
+            .comparison-grid,
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-date {
+                min-width: auto;
+            }
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+        
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>HOLISTIC INVESTMENT PROPOSAL</h1>
+            <p class="hero-subtitle">Why $250K Builds a Winning Business,<br>While $50K Builds a Losing One</p>
+            
+            <div style="background: rgba(239, 68, 68, 0.2); backdrop-filter: blur(10px); padding: 1.5rem 2rem; border-radius: 12px; border: 2px solid rgba(239, 68, 68, 0.5); margin: 2rem auto; max-width: 700px;">
+                <div style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.75rem;">⚡ TIME-SENSITIVE OPPORTUNITY</div>
+                <div style="font-size: 1.05rem; opacity: 0.95; line-height: 1.6;">
+                    <strong>Vendor applications due: 7 days</strong><br>
+                    Affordable Care Act (ACA) subsidies expire: 46 days<br>
+                    Healthcare reform window: 24 months before competitive bidding returns
+                </div>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <span class="stat-number">$250K</span>
+                    <span class="stat-label">Investment Required</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">70-75%</span>
+                    <span class="stat-label">Success Probability</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">100-600x</span>
+                    <span class="stat-label">Potential ROI</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">3-5</span>
+                    <span class="stat-label">Years to Exit</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="section problems-section">
+        <div class="section-header">
+            <h2 class="section-title" style="color: white; -webkit-text-fill-color: white;">The DME Industry is Fundamentally Broken</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Six structural problems guarantee failure for traditional medical equipment companies</p>
+        </div>
+        
+        <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 2.5rem; border-radius: 20px; margin-bottom: 3rem; max-width: 1000px; margin-left: auto; margin-right: auto;">
+            <h3 style="font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">The Core Problem</h3>
+            <p style="font-size: 1.2rem; line-height: 1.8; text-align: center;">
+                Traditional DME (Durable Medical Equipment) companies are trapped in a business model designed for the 1990s. Medicare rates don't cover costs. Competitive bidding is returning in 24 months to cut margins 40-60%. Healthcare reform is about to eliminate insurance billing entirely. And traditional operators have no way to adapt.
+            </p>
+            <p style="font-size: 1.3rem; font-weight: 700; margin-top: 2rem; text-align: center; color: #fbbf24;">
+                60% of small DME companies fail within 3 years. Here's why:
+            </p>
+        </div>
+        
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="problem-number">#1</div>
+                <h3 class="problem-title">Medicare Rates Don't Cover Costs</h3>
+                <p class="problem-description">Traditional DME companies in NYC LOSE MONEY on hospital beds because Medicare reimbursement rates haven't kept up with actual costs.</p>
+                
+                <div class="example-box">
+                    <div class="example-title">Example: Hospital Bed Economics</div>
+                    <div class="calc-row">
+                        <span>Medicare pays (13 month rental):</span>
+                        <span>$936</span>
+                    </div>
+                    <div style="margin: 1rem 0; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.2); border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        <div style="font-weight: 600; margin-bottom: 0.5rem;">Actual Costs:</div>
+                        <div class="calc-row">
+                            <span>Hospital bed:</span>
+                            <span>$600-900</span>
+                        </div>
+                        <div class="calc-row">
+                            <span>Delivery (2 trips: deliver + pickup):</span>
+                            <span>$150-300</span>
+                        </div>
+                        <div class="calc-row">
+                            <span>Billing/documentation:</span>
+                            <span>$100-200</span>
+                        </div>
+                        <div class="calc-row">
+                            <span>Storage/overhead:</span>
+                            <span>$100-150</span>
+                        </div>
+                    </div>
+                    <div class="calc-row calc-total">
+                        <span>Total Cost:</span>
+                        <span>$950-1,550</span>
+                    </div>
+                    <div class="calc-row calc-loss">
+                        <span>LOSS per bed:</span>
+                        <span>-$14 to -$614</span>
+                    </div>
+                </div>
+                <p style="margin-top: 1rem; font-weight: 600; color: #fbbf24;">Traditional NYC DME companies actually LOSE MONEY on hospital beds. They survive by cherry-picking profitable products and hoping for volume.</p>
+            </div>
+            
+            <div class="problem-card">
+                <div class="problem-number">#2</div>
+                <h3 class="problem-title">Competitive Bidding Destroyed Margins</h3>
+                <p class="problem-description">From 2013-2021, Medicare forced DME companies to bid against each other for contracts. Rates dropped 40-60% below market. Small companies went bankrupt. Survivors barely break even.</p>
+                <div style="background: rgba(239, 68, 68, 0.2); padding: 1rem; border-radius: 8px; margin-top: 1rem; border-left: 3px solid #ef4444;">
+                    <p style="font-weight: 600;">Current gap period ends January 2027—competitive bidding returns and margins collapse again.</p>
+                </div>
+                <p style="margin-top: 1rem; font-weight: 600; color: #fbbf24;">We have a 24-month window to build revenue and transition to a platform model before this kills traditional DME economics forever.</p>
+            </div>
+            
+            <div class="problem-card">
+                <div class="problem-number">#3</div>
+                <h3 class="problem-title">Slow Payment Cycles Kill Cash Flow</h3>
+                <p class="problem-description">Traditional DME operates on brutal cash flow:</p>
+                <div style="margin-top: 1rem;">
+                    <div style="padding: 0.5rem 0;">• Day 1: Deliver equipment (you paid for inventory weeks ago)</div>
+                    <div style="padding: 0.5rem 0;">• Day 7-14: Submit billing (after paperwork complete)</div>
+                    <div style="padding: 0.5rem 0;">• Day 30-45: First insurance review</div>
+                    <div style="padding: 0.5rem 0;">• Day 45-75: Insurance pays (if no issues, denials, or appeals)</div>
+                </div>
+                <p style="margin-top: 1rem; font-weight: 600; color: #fbbf24;">45-75 days from delivery to payment. You need to buy inventory TODAY, staff delivery TODAY, pay rent TODAY—get paid in 2-3 months. Most small DMEs run out of cash within 6 months.</p>
+            </div>
+            
+            <div class="problem-card">
+                <div class="problem-number">#4</div>
+                <h3 class="problem-title">No Commercial Insurance = Stuck at Low Rates</h3>
+                <p class="problem-description">Most small DME companies only have Medicare/Medicaid contracts because commercial insurance (UnitedHealthcare, Aetna, BCBS) requires:</p>
+                <div style="margin-top: 1rem;">
+                    <div style="padding: 0.5rem 0;">• Professional facility (passes strict audits)</div>
+                    <div style="padding: 0.5rem 0;">• $10-15K application fees per carrier</div>
+                    <div style="padding: 0.5rem 0;">• 6-9 month accreditation process</div>
+                    <div style="padding: 0.5rem 0;">• Proper climate-controlled storage</div>
+                    <div style="padding: 0.5rem 0;">• Professional showroom space</div>
+                    <div style="padding: 0.5rem 0;">• Quality management systems</div>
+                </div>
+                <p style="margin-top: 1rem; font-weight: 600; color: #fbbf24;">Small DME can't afford the upfront investment. Result: Stuck at Medicare rates ($72/month for hospital beds) while competitors with commercial contracts earn $250/month (3.5x higher).</p>
+                <div style="background: rgba(16, 185, 129, 0.2); padding: 1.5rem; border-radius: 8px; margin-top: 1rem; border-left: 3px solid #10b981;">
+                    <p style="font-weight: 600; margin-bottom: 0.5rem;">The Math:</p>
+                    <p>50 patients × $178/month additional revenue = $106,800/year difference</p>
+                    <p style="margin-top: 0.5rem; font-weight: 700;">This single factor alone determines who wins and who goes bankrupt.</p>
+                </div>
+            </div>
+            
+            <div class="problem-card">
+                <div class="problem-number">#5</div>
+                <h3 class="problem-title">English-Only = Missing 500K+ Customers</h3>
+                <p class="problem-description">NYC metro has 500,000+ Russian, Uzbek, Farsi, and Tajik speakers. 15-20% are elderly (75,000-100,000 seniors who need medical equipment).</p>
+                <p style="margin-top: 1rem;">Traditional DME companies:</p>
+                <div style="margin-top: 1rem;">
+                    <div style="padding: 0.5rem 0;">• English-only staff and materials</div>
+                    <div style="padding: 0.5rem 0;">• No community connections or trust</div>
+                    <div style="padding: 0.5rem 0;">• Generic marketing ($300-500 per customer acquisition)</div>
+                    <div style="padding: 0.5rem 0;">• Can't communicate with immigrant families about complex medical needs</div>
+                </div>
+                <p style="margin-top: 1rem; font-weight: 600; color: #fbbf24;">Current multilingual DME penetration: <5%. We have zero broad competition for 70,000+ potential customers. They're desperately underserved.</p>
+            </div>
+            
+            <div class="problem-card">
+                <div class="problem-number">#6</div>
+                <h3 class="problem-title">1990s Technology = Can't Scale</h3>
+                <p class="problem-description">Traditional DME still runs on:</p>
+                <div style="margin-top: 1rem;">
+                    <div style="padding: 0.5rem 0;">• Manual paperwork (carbon copy forms)</div>
+                    <div style="padding: 0.5rem 0;">• Phone/fax orders (yes, fax machines in 2025)</div>
+                    <div style="padding: 0.5rem 0;">• No workflow automation</div>
+                    <div style="padding: 0.5rem 0;">• Manual insurance verification (30-45 minutes per patient)</div>
+                    <div style="padding: 0.5rem 0;">• 40+ hours/week on administrative tasks per staff member</div>
+                </div>
+                <p style="margin-top: 1rem; font-weight: 600; color: #fbbf24;">Result: High costs, can't scale, trapped in linear growth. 10 orders = 40 hours of admin work. 50 orders = 200 hours of admin work. They can't grow without hiring armies of $20/hour admin staff. Margins evaporate.</p>
+                <div style="background: rgba(16, 185, 129, 0.2); padding: 1rem; border-radius: 8px; margin-top: 1rem; border-left: 3px solid #10b981;">
+                    <p style="font-weight: 600;">Modern automation reduces admin work by 80%: Process 50 orders in 8 hours instead of 200 hours. 25x productivity advantage.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: rgba(239, 68, 68, 0.25); backdrop-filter: blur(10px); padding: 3rem; border-radius: 20px; margin-top: 4rem; border: 3px solid rgba(239, 68, 68, 0.6); max-width: 1100px; margin-left: auto; margin-right: auto;">
+            <h3 style="font-size: 2.5rem; margin-bottom: 1.5rem; text-align: center;">The Death Spiral</h3>
+            <div style="font-size: 1.15rem; line-height: 2;">
+                <p style="text-align: center; margin-bottom: 2rem;">Traditional DME companies are caught in an inescapable cycle:</p>
+                <ol style="margin-left: 2rem;">
+                    <li style="margin-bottom: 1rem;">Low Medicare rates force them to maximize volume</li>
+                    <li style="margin-bottom: 1rem;">High volume requires hiring more admin staff (manual systems)</li>
+                    <li style="margin-bottom: 1rem;">More staff = higher overhead = thinner margins</li>
+                    <li style="margin-bottom: 1rem;">Thinner margins = can't invest in commercial insurance applications or automation</li>
+                    <li style="margin-bottom: 1rem;">Stuck at Medicare rates = competitors with commercial contracts steal customers</li>
+                    <li style="margin-bottom: 1rem;">Revenue drops = can't cover fixed costs</li>
+                    <li style="font-weight: 700; font-size: 1.25rem;">BANKRUPTCY</li>
+                </ol>
+            </div>
+            <p style="font-size: 1.4rem; font-weight: 800; text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 2px solid rgba(255,255,255,0.3);">
+                This is why 60% of small DME companies fail within 3 years.
+            </p>
+        </div>
+    </section>
+
+    <!-- Executive Summary -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">The Opportunity</h2>
+            <p class="section-subtitle">Now you understand the problem. Here's how we escape the death spiral—and why most attempts fail.</p>
+        </div>
+        
+        <div style="background: white; border-radius: 24px; padding: 3rem; box-shadow: 0 20px 60px rgba(0,0,0,0.1); margin-bottom: 3rem;">
+            <h3 style="font-size: 2rem; margin-bottom: 2rem; text-align: center;">Most People Try to Fix This With $50K. They All Fail.</h3>
+            
+            <p style="font-size: 1.15rem; line-height: 1.8; color: #475569; margin-bottom: 2rem; text-align: center;">
+                When entrepreneurs see the DME industry's problems, they think: "I'll start small, bootstrap, grow organically." They raise $50K, rent a degraded warehouse, buy one van, stock minimal inventory. <strong>Every single one goes bankrupt within 3 years.</strong>
+            </p>
+            
+            <div style="background: #fee2e2; padding: 2rem; border-radius: 12px; border-left: 4px solid #dc2626; margin-bottom: 2rem;">
+                <h4 style="font-size: 1.5rem; color: #7f1d1d; margin-bottom: 1rem;">Why $50K Guarantees Failure</h4>
+                <p style="color: #991b1b; line-height: 1.8;">
+                    You can't half-fix these structural problems. Either you have a professional facility that passes commercial insurance audits (→ 3x rates) or you're stuck at Medicare rates forever. Either you have deep inventory or you lose sales daily. Either you have 2 vans for same-day delivery or you turn away 40% of customers. <strong>There's no middle ground. $50K forces you into the same death spiral as traditional DME.</strong>
+                </p>
+            </div>
+            
+            <h3 style="font-size: 2rem; margin-bottom: 2rem; text-align: center; color: #059669;">Our Approach: Break ALL Six Problems Simultaneously</h3>
+            
+            <p style="font-size: 1.15rem; line-height: 1.8; color: #475569; margin-bottom: 2rem;">
+                We're not trying to "do DME better." We're building an entirely different business model that makes all six structural problems irrelevant—and then evolving it into a platform that captures the entire market.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem;">
+                <div style="border-left: 4px solid #10b981; padding-left: 2rem;">
+                    <div style="font-size: 1.1rem; font-weight: 700; color: #059669; margin-bottom: 1rem;">PHASE 1: YEAR 1 (2026)</div>
+                    <h4 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Holistic Medical Supply</h4>
+                    <p style="font-size: 1.05rem; line-height: 1.8; color: #475569; margin-bottom: 1rem;">
+                        Launch modern DME company with commercial insurance (3x rates), multilingual advantage (500K underserved market), same-day delivery (2x capacity), and automation (5x productivity). Generate $790K revenue, $270K profit in Year 1.
+                    </p>
+                    <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 12px; margin-top: 1.5rem;">
+                        <div style="font-weight: 700; color: #059669; margin-bottom: 0.5rem;">How We Solve the 6 Problems:</div>
+                        <p style="font-size: 0.95rem; color: #065f46;">
+                            ✓ Problem #1 (Low Medicare rates): Get commercial insurance contracts → 3x rates<br>
+                            ✓ Problem #2 (Competitive bidding): Transition to platform before 2027 deadline<br>
+                            ✓ Problem #3 (Cash flow): Proper capitalization + commercial rates = sustainable<br>
+                            ✓ Problem #4 (No commercial insurance): $24K investment gets us approved<br>
+                            ✓ Problem #5 (English only): Native Russian/Uzbek/Farsi/Tajik speakers on staff<br>
+                            ✓ Problem #6 (1990s tech): Modern automation stack from day one
+                        </p>
+                    </div>
+                </div>
+                
+                <div style="border-left: 4px solid #667eea; padding-left: 2rem;">
+                    <div style="font-size: 1.1rem; font-weight: 700; color: #667eea; margin-bottom: 1rem;">PHASE 2: YEAR 2-3 (2027-2028)</div>
+                    <h4 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">MedBazaar Platform</h4>
+                    <p style="font-size: 1.05rem; line-height: 1.8; color: #475569; margin-bottom: 1rem;">
+                        Use Year 1 profits ($270K) to build marketplace platform. Other DME companies list products, we take 15% commission. Self-funded evolution from operator to platform. 85% margins, exponential scaling, $50-150M valuation.
+                    </p>
+                    <div style="background: #eef2ff; padding: 1.5rem; border-radius: 12px; margin-top: 1.5rem;">
+                        <div style="font-weight: 700; color: #667eea; margin-bottom: 0.5rem;">Why Only a DME Operator Can Build This:</div>
+                        <p style="font-size: 0.95rem; color: #3730a3;">
+                            • We understand the pain points (we live them)<br>
+                            • Instant credibility with other DMEs<br>
+                            • Built-in test customer (ourselves)<br>
+                            • Deep industry knowledge (billing, insurance, compliance)<br>
+                            • Healthcare reform makes timing perfect
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="urgency-box">
+            <h3 class="urgency-title">⏰ Why Speed Matters</h3>
+            <div class="urgency-text">
+                <p style="margin-bottom: 1rem;"><strong>We have a 24-month window</strong> before competitive bidding returns in January 2027 and compresses DME margins by 40-60%.</p>
+                <p style="margin-bottom: 1rem;"><strong>Healthcare reform is happening NOW.</strong> Affordable Care Act (ACA) subsidies expire December 31, 2025 (46 days from now). Direct-to-consumer payment mechanisms are 65-75% likely within 12 months.</p>
+                <p style="margin-bottom: 1rem;"><strong>Vendor applications are due in 7 days.</strong> We need to order initial inventory ($40-50K) across 20+ VGM partners to launch operations.</p>
+                <p style="font-weight: 700; font-size: 1.15rem; margin-top: 1.5rem;">Half-measures won't work. This requires full commitment, immediate execution, and complete funding. Every week of delay costs market position.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Two Paths Comparison -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Two Possible Paths</h2>
+            <p class="section-subtitle">Same market, same opportunity—radically different outcomes</p>
+        </div>
+        
+        <div class="comparison-grid">
+            <!-- Path 1: Traditional DME -->
+            <div class="comparison-card card-losing">
+                <div class="card-icon">⚠️</div>
+                <h3 class="card-title">Path 1: Traditional DME</h3>
+                <div class="card-amount">$50K</div>
+                
+                <ul class="feature-list">
+                    <li>Copy what other DME companies do</li>
+                    <li>Rely only on insurance billing</li>
+                    <li>Use 1990s technology (manual paperwork, fax)</li>
+                    <li>Slow delivery (7-14 days)</li>
+                    <li>Single vehicle (capacity constrained)</li>
+                    <li>Degraded warehouse (fails audits)</li>
+                    <li>Medicare-only rates (stuck at low reimbursement)</li>
+                </ul>
+                
+                <div class="outcome-box">
+                    <div class="outcome-label">5-Year Outcome:</div>
+                    <div class="outcome-text">Bankruptcy (-100% ROI)</div>
+                    <p style="margin-top: 1rem; font-size: 0.95rem;">60% of small DME companies fail within 3 years following this model</p>
+                </div>
+            </div>
+            
+            <!-- Path 2: Modern DME -->
+            <div class="comparison-card card-winning">
+                <div class="card-icon">🚀</div>
+                <h3 class="card-title">Path 2: Modern DME → Platform</h3>
+                <div class="card-amount">$250K</div>
+                
+                <ul class="feature-list">
+                    <li>Multilingual advantage (500K+ underserved market)</li>
+                    <li>Commercial insurance (3x higher reimbursement)</li>
+                    <li>Modern automation (5x productivity)</li>
+                    <li>Same-day delivery (2-4 hours)</li>
+                    <li>Professional facility (passes all audits)</li>
+                    <li>Deep inventory (complete orders, not partial)</li>
+                    <li>Year 1 profits fund platform evolution</li>
+                    <li>85% margin marketplace business</li>
+                </ul>
+                
+                <div class="outcome-box">
+                    <div class="outcome-label">5-Year Outcome:</div>
+                    <div class="outcome-text">$25-150M Company (100-600x ROI)</div>
+                    <p style="margin-top: 1rem; font-size: 0.95rem;">Dominant market position in both DME and platform plays</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why $50K Fails -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Why the $50K Path Fails</h2>
+            <p class="section-subtitle">Underinvestment guarantees failure in this business</p>
+        </div>
+        
+        <div class="investment-breakdown">
+            <h3 style="font-size: 2rem; margin-bottom: 2rem; text-align: center;">What $50K Gets You</h3>
+            
+            <div class="breakdown-item">
+                <span class="breakdown-label">Minimal inventory (can't fill complete orders)</span>
+                <span class="breakdown-amount">~$25K</span>
+            </div>
+            <div class="breakdown-item">
+                <span class="breakdown-label">Single delivery van (5-7 deliveries max/day)</span>
+                <span class="breakdown-amount">~$12K</span>
+            </div>
+            <div class="breakdown-item">
+                <span class="breakdown-label">Basic website (no automation)</span>
+                <span class="breakdown-amount">~$3K</span>
+            </div>
+            <div class="breakdown-item">
+                <span class="breakdown-label">Degraded warehouse (fails commercial insurance audits)</span>
+                <span class="breakdown-amount">~$5K</span>
+            </div>
+            <div class="breakdown-item">
+                <span class="breakdown-label">Medicare billing software only</span>
+                <span class="breakdown-amount">~$3K</span>
+            </div>
+            <div class="breakdown-item">
+                <span class="breakdown-label">Minimal working capital (cash flow crisis risk)</span>
+                <span class="breakdown-amount">~$2K</span>
+            </div>
+            <div class="breakdown-item">
+                <span class="breakdown-label"><strong>TOTAL</strong></span>
+                <span class="breakdown-amount">$50,000</span>
+            </div>
+        </div>
+        
+        <div class="highlight-box">
+            <h3 class="highlight-title">💔 How This Fails in Practice</h3>
+            <div class="highlight-text">
+                <p style="margin-bottom: 1.5rem;"><strong>Inventory Problem:</strong> Patient needs hospital bed + mattress + rails + overbed table. You only have the bed in stock. "Sorry, mattress arrives next week." Patient calls competitor who has everything. <strong>You lose $1,200 sale.</strong> This happens constantly.</p>
+                
+                <p style="margin-bottom: 1.5rem;"><strong>Delivery Problem:</strong> 8 patients want same-day delivery. You have 1 van that can do 5-7 deliveries per day. Three patients wait, get frustrated, call competitors with 2+ vans. <strong>You lose $4,500 revenue.</strong></p>
+                
+                <p style="margin-bottom: 1.5rem;"><strong>Facility Problem:</strong> Doctor visits your warehouse to assess referral partnership. Sees degraded, unprofessional space with no proper storage systems or climate control. Refers to organized DME instead. <strong>You lose entire referral stream.</strong></p>
+                
+                <p style="margin-bottom: 1.5rem;"><strong>Commercial Insurance Problem:</strong> Insurance auditor visits your facility. Fails inspection standards (no climate control, inadequate security, unprofessional appearance). Application rejected. <strong>You're stuck at Medicare rates forever—$72/month for beds while competitors with professional facilities get $250/month from commercial insurance.</strong></p>
+                
+                <p style="font-weight: 700; font-size: 1.15rem;">Competitor with proper facility earns $178 MORE per patient per month. After 50 patients, that's $8,900/month or $106,800/year advantage. You can't compete. You lose customers. You go bankrupt.</p>
+            </div>
+        </div>
+        
+        <div class="financial-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Revenue</th>
+                        <th>Net Profit</th>
+                        <th>Company Value</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Year 1</td>
+                        <td>$300-400K</td>
+                        <td>-$20K to +$30K</td>
+                        <td>$100K</td>
+                        <td>Struggling to survive</td>
+                    </tr>
+                    <tr>
+                        <td>Year 2</td>
+                        <td>$400K</td>
+                        <td>$50-80K</td>
+                        <td>$400K</td>
+                        <td>Working 60+ hours/week</td>
+                    </tr>
+                    <tr style="background: #fee2e2;">
+                        <td><strong>Year 3</strong></td>
+                        <td>$300K</td>
+                        <td style="color: #dc2626; font-weight: 700;">-$20K</td>
+                        <td style="color: #dc2626; font-weight: 700;">$200K</td>
+                        <td style="color: #dc2626; font-weight: 700;">Competitive bidding returns—margins collapse</td>
+                    </tr>
+                    <tr style="background: #fecaca;">
+                        <td><strong>Year 5</strong></td>
+                        <td>$200K</td>
+                        <td style="color: #dc2626; font-weight: 700;">-$50K</td>
+                        <td style="color: #dc2626; font-weight: 700; font-size: 1.25rem;">$0</td>
+                        <td style="color: #dc2626; font-weight: 700;">Bankruptcy</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="roi-highlight" style="background: var(--gradient-danger);">
+            <div class="roi-number">-100%</div>
+            <div class="roi-label">Return on $50K Investment</div>
+            <p style="margin-top: 1.5rem; font-size: 1.15rem; line-height: 1.6;">
+                This is why 60% of small DME companies fail within 3 years.<br>
+                Underinvestment guarantees you'll be one of them.
+            </p>
+        </div>
+    </section>
+
+    <!-- Trump Healthcare Policy - THE CATALYST -->
+    <section class="section" style="background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); color: white;">
+        <div class="section-header">
+            <h2 class="section-title" style="color: white; -webkit-text-fill-color: white;">The Catalyst: Healthcare Reform</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Why this opportunity exists RIGHT NOW and won't last</p>
+        </div>
+        
+        <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 3rem; border-radius: 20px; max-width: 1000px; margin: 0 auto;">
+            <h3 style="font-size: 2rem; margin-bottom: 2rem; text-align: center;">Trump Administration Healthcare Policy Changes</h3>
+            
+            <div style="background: rgba(251, 191, 36, 0.2); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border: 2px solid #fbbf24;">
+                <h4 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fef3c7;">⏰ Critical Timeline</h4>
+                <div style="font-size: 1.15rem; line-height: 2;">
+                    <p><strong>December 31, 2025 (46 days):</strong> ACA subsidies expire</p>
+                    <p><strong>2026 (likely):</strong> Direct-to-consumer payment implementation</p>
+                    <p><strong>January 2027:</strong> Competitive bidding returns (kills traditional DME margins)</p>
+                </div>
+            </div>
+            
+            <h4 style="font-size: 1.75rem; margin-bottom: 1.5rem;">Proposed Changes:</h4>
+            <ul style="list-style: none; font-size: 1.15rem; line-height: 2;">
+                <li style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                    ✓ Redirect ~$125 billion currently allocated to insurance subsidies
+                </li>
+                <li style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                    ✓ Implement direct-to-consumer payment mechanisms ($2,000-6,000 per person annually)
+                </li>
+                <li style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                    ✓ Enable consumer-driven healthcare purchasing (patients shop like Amazon)
+                </li>
+                <li style="padding: 1rem 0;">
+                    ✓ Reduce insurance company intermediation (no more insurance billing delays)
+                </li>
+            </ul>
+            
+            <div style="background: rgba(16, 185, 129, 0.2); padding: 2rem; border-radius: 12px; margin-top: 2rem; border: 2px solid #10b981;">
+                <h4 style="font-size: 1.5rem; margin-bottom: 1rem; color: #d1fae5;">Probability Assessment</h4>
+                <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">
+                    <strong>65-75% probability</strong> of SOME form of direct payment/HSA expansion within 12 months
+                </p>
+                <p style="font-size: 1rem; margin-top: 1rem; opacity: 0.95;">
+                    Republican control of House, Senate, and White House creates legislative path. Even partial implementation transforms the market.
+                </p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 4rem;">
+            <h3 style="font-size: 2.5rem; text-align: center; margin-bottom: 2rem;">What This Means for DME</h3>
+            
+            <div class="comparison-chart">
+                <div class="chart-column">
+                    <div class="chart-header">
+                        <div class="chart-title" style="color: #64748b;">Today (Old Model)</div>
+                    </div>
+                    <ul style="list-style: none; font-size: 1.1rem; color: #475569; line-height: 1.8;">
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">Insurance company controls everything</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">Patient has no choice of provider</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">DME bills insurance (45-75 day wait)</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">Insurance pays slowly at low rates</li>
+                        <li style="padding: 0.75rem 0;">Patient never sees prices</li>
+                    </ul>
+                </div>
+                
+                <div class="chart-column" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);">
+                    <div class="chart-header">
+                        <div class="chart-title" style="color: #065f46;">After Reform (2026+)</div>
+                    </div>
+                    <ul style="list-style: none; font-size: 1.1rem; color: #065f46; font-weight: 500; line-height: 1.8;">
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(6, 95, 70, 0.2);">✓ Patient gets $2,000-6,000 healthcare dollars annually</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(6, 95, 70, 0.2);">✓ Patient shops for medical equipment online (like Amazon)</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(6, 95, 70, 0.2);">✓ Patient compares prices, reads reviews, chooses vendor</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(6, 95, 70, 0.2);">✓ Patient pays directly (instant cash, no insurance delays)</li>
+                        <li style="padding: 0.75rem 0;">✓ Price transparency forces competition</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: rgba(239, 68, 68, 0.2); backdrop-filter: blur(10px); padding: 3rem; border-radius: 20px; margin-top: 4rem; border: 2px solid rgba(239, 68, 68, 0.5); max-width: 1000px; margin-left: auto; margin-right: auto;">
+            <h3 style="font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">Why Traditional DME Dies in This Scenario</h3>
+            <div style="font-size: 1.15rem; line-height: 1.8;">
+                <p style="margin-bottom: 1rem;">When patients control the money and shop online, traditional DME companies can't compete because they have:</p>
+                <ul style="list-style: none; margin-top: 1.5rem;">
+                    <li style="padding: 0.5rem 0;">❌ No e-commerce websites (can't see products/prices online)</li>
+                    <li style="padding: 0.5rem 0;">❌ No price transparency (patients don't know costs)</li>
+                    <li style="padding: 0.5rem 0;">❌ Slow delivery (7-14 days vs our 2-4 hours)</li>
+                    <li style="padding: 0.5rem 0;">❌ English only (can't communicate with immigrants)</li>
+                    <li style="padding: 0.5rem 0;">❌ No reviews (patients can't verify quality)</li>
+                </ul>
+                <p style="margin-top: 2rem; font-weight: 700; font-size: 1.25rem; text-align: center;">
+                    Traditional DME optimized for insurance billing.<br>
+                    When patients pay directly, traditional DME goes bankrupt.
+                </p>
+            </div>
+        </div>
+        
+        <div style="background: rgba(16, 185, 129, 0.2); backdrop-filter: blur(10px); padding: 3rem; border-radius: 20px; margin-top: 3rem; border: 2px solid rgba(16, 185, 129, 0.5); max-width: 1000px; margin-left: auto; margin-right: auto;">
+            <h3 style="font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">Why Modern DME Wins in This Scenario</h3>
+            <div style="font-size: 1.15rem; line-height: 1.8;">
+                <p style="margin-bottom: 1rem;">Modern DME is built for direct-to-consumer from day one:</p>
+                <ul style="list-style: none; margin-top: 1.5rem;">
+                    <li style="padding: 0.5rem 0;">✓ E-commerce website (patients shop online, see products/prices)</li>
+                    <li style="padding: 0.5rem 0;">✓ Price transparency (all prices clearly displayed)</li>
+                    <li style="padding: 0.5rem 0;">✓ Same-day delivery (order today, receive in 2-4 hours)</li>
+                    <li style="padding: 0.5rem 0;">✓ Multilingual (shop in native language)</li>
+                    <li style="padding: 0.5rem 0;">✓ Reviews and ratings (see other patients' experiences)</li>
+                </ul>
+                <p style="margin-top: 2rem; font-weight: 700; font-size: 1.25rem; text-align: center;">
+                    Modern DME is ready for healthcare reform BEFORE it happens.<br>
+                    First-mover advantage = market dominance.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Immediate Action Required -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Why We Must Move NOW</h2>
+            <p class="section-subtitle">Every week of delay costs market position and opportunity</p>
+        </div>
+        
+        <div class="timeline-box">
+            <h3 style="font-size: 2rem; margin-bottom: 2rem; text-align: center; color: var(--primary);">Critical Path Timeline</h3>
+            
+            <div style="background: #dcfce7; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid #10b981;">
+                <h4 style="font-size: 1.25rem; color: #065f46; margin-bottom: 0.75rem;">✓ Already Complete:</h4>
+                <p style="color: #065f46; font-size: 1.05rem;">
+                    • 2,000 sq ft Port Washington facility lease signed<br>
+                    • 3 warm leads established (2 homecare agencies + 1 physician group)<br>
+                    • CMS approval secured through May 2028 (36 BOC categories)
+                </p>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">Week 1</div>
+                <div class="timeline-content">
+                    <strong>Major Vendor Orders & Van Purchase (IMMEDIATE)</strong><br>
+                    Submit vendor applications to 20+ VGM partners. Place initial inventory orders ($40-50K across hospital beds, wheelchairs, CPAP machines, diabetic supplies, mobility aids). Order 2 delivery vans (4-week lead time).
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">Week 1-2</div>
+                <div class="timeline-content">
+                    <strong>Facility Buildout & Commercial Insurance Applications</strong><br>
+                    Complete warehouse buildout (climate control, security systems, professional finishes, showroom area). Submit applications to UnitedHealthcare, Aetna, BCBS (6-9 month approval process). Every week of delay = 1 week later we earn 3x rates.
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">Week 2-3</div>
+                <div class="timeline-content">
+                    <strong>Technology Stack Implementation</strong><br>
+                    Deploy insurance billing automation platform, physician referral/e-prescription portal, AI-powered prior authorization system, workflow automation tools, multilingual e-commerce website.
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">Week 3-4</div>
+                <div class="timeline-content">
+                    <strong>Second Inventory Wave + Staffing</strong><br>
+                    Additional inventory purchases ($25-35K) to reach full product assortment. Hire delivery staff and multilingual customer service. Complete facility setup.
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">Week 4-5</div>
+                <div class="timeline-content">
+                    <strong>Soft Launch with Warm Leads</strong><br>
+                    Vans arrive and operational. Begin fulfilling orders from existing warm leads (2 homecare agencies + physician group). Conservative assumption: 1 of 3 converts immediately. First revenue: ~$10K.
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">Month 2-3</div>
+                <div class="timeline-content">
+                    <strong>Marketing Launch + Community Outreach</strong><br>
+                    Multilingual Facebook campaigns (Russian/Uzbek/Farsi/Tajik). Ramp up physician outreach programs using community connections. Word-of-mouth begins in immigrant communities. Revenue ramps: $25-45K/month.
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">Month 3-4</div>
+                <div class="timeline-content">
+                    <strong>Scale Operations</strong><br>
+                    Revenue accelerates as community awareness builds. Optimize delivery routes. Refine automation workflows. Monthly revenue: $45-55K.
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">Month 6-9</div>
+                <div class="timeline-content">
+                    <strong>Commercial Insurance Approval (THE MULTIPLIER)</strong><br>
+                    UHC/Aetna/BCBS contracts activate. Reimbursement rates increase 3x immediately ($72/month → $250/month for hospital beds). Revenue jumps 40-60% from rate increase alone.
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">Month 9-12</div>
+                <div class="timeline-content">
+                    <strong>Full-Scale Operations</strong><br>
+                    70-80 active patients. Commercial insurance rates on 60%+ of business. Monthly revenue: $80-90K. Operating at target margins.
+                </div>
+            </div>
+            
+            <div class="timeline-item" style="background: #dcfce7; border-radius: 12px; padding: 1.5rem; border: 2px solid #10b981;">
+                <div class="timeline-date" style="color: #059669;">Month 12</div>
+                <div class="timeline-content" style="color: #065f46;">
+                    <strong>Year 1 Complete: $790K Revenue, $270K Net Profit</strong><br>
+                    Profitable operations. Industry credibility established. Deep operational knowledge. Ready to fund Phase 2 (MedBazaar platform) from profits.
+                </div>
+            </div>
+            
+            <div class="timeline-item" style="background: #eef2ff; border-radius: 12px; padding: 1.5rem; border: 2px solid #667eea; margin-top: 1rem;">
+                <div class="timeline-date" style="color: #667eea;">Year 2-3</div>
+                <div class="timeline-content" style="color: #3730a3;">
+                    <strong>MedBazaar Platform Launch</strong><br>
+                    Use Year 1 profits ($270K) to build marketplace platform. Recruit 20-50 DME vendors. Self-funded evolution from operator to platform. 85% margins. $50-150M valuation target.
+                </div>
+            </div>
+        </div>
+        
+        <div class="urgency-box">
+            <h3 class="urgency-title">⚠️ Why Half-Measures Don't Work</h3>
+            <div class="urgency-text">
+                <p style="margin-bottom: 1rem;"><strong>You can't launch a DME company with partial funding.</strong> Either you have:</p>
+                <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
+                    <li>Professional facility that passes audits → commercial insurance → 3x rates</li>
+                    <li>OR degraded facility that fails audits → Medicare only → bankruptcy in 3 years</li>
+                </ul>
+                <p style="margin-bottom: 1rem;"><strong>You can't half-automate operations.</strong> Either you have:</p>
+                <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
+                    <li>Modern technology → 2 hours to process 50 orders → scalable business</li>
+                    <li>OR manual paperwork → 40 hours to process 50 orders → trapped at small scale</li>
+                </ul>
+                <p style="margin-bottom: 1rem;"><strong>You can't do same-day delivery with one van.</strong> Either you have:</p>
+                <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
+                    <li>2 vans → 10-14 deliveries/day → capture all demand → 2x revenue</li>
+                    <li>OR 1 van → 5-7 deliveries/day → turn customers away → lose to competitors</li>
+                </ul>
+                <p style="font-weight: 700; font-size: 1.2rem; margin-top: 2rem; text-align: center;">
+                    This business requires full commitment. $250K builds a winner. $50K builds a loser. $150K builds confusion and failure.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What $250K Builds -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">What $250K Builds</h2>
+            <p class="section-subtitle">Complete modern DME infrastructure that wins immediately</p>
+        </div>
+        
+        <div class="investment-breakdown">
+            <h3 style="font-size: 2rem; margin-bottom: 2rem; text-align: center; color: var(--secondary);">Investment Allocation</h3>
+            
+            <div class="breakdown-item">
+                <div>
+                    <div class="breakdown-label" style="font-weight: 700;">💻 Technology Infrastructure</div>
+                    <div style="font-size: 0.95rem; color: #64748b; margin-top: 0.25rem;">
+                        Insurance billing automation platform, physician referral/e-prescription portal, AI-powered prior authorization system, workflow automation tools, multilingual e-commerce website
+                    </div>
+                </div>
+                <span class="breakdown-amount">$42,000</span>
+            </div>
+            
+            <div class="breakdown-item">
+                <div>
+                    <div class="breakdown-label" style="font-weight: 700;">🚚 Delivery Infrastructure</div>
+                    <div style="font-size: 0.95rem; color: #64748b; margin-top: 0.25rem;">
+                        2 professional delivery vans for hospital beds and large equipment. Enables 10-14 deliveries/day (vs 5-7 with one van)
+                    </div>
+                </div>
+                <span class="breakdown-amount">$36,000</span>
+            </div>
+            
+            <div class="breakdown-item">
+                <div>
+                    <div class="breakdown-label" style="font-weight: 700;">🏢 Professional Facility</div>
+                    <div style="font-size: 0.95rem; color: #64748b; margin-top: 0.25rem;">
+                        2,000 sq ft Port Washington space. Lease commitment + full buildout (climate control, security, professional finishes, showroom area). Passes commercial insurance audits.
+                    </div>
+                </div>
+                <span class="breakdown-amount">$45,000</span>
+            </div>
+            
+            <div class="breakdown-item">
+                <div>
+                    <div class="breakdown-label" style="font-weight: 700;">📦 Deep Inventory</div>
+                    <div style="font-size: 0.95rem; color: #64748b; margin-top: 0.25rem;">
+                        Full product assortment across all major DME categories. Complete orders immediately (bed + mattress + rails + table). No "item out of stock" losses.
+                    </div>
+                </div>
+                <span class="breakdown-amount">$75,000</span>
+            </div>
+            
+            <div class="breakdown-item">
+                <div>
+                    <div class="breakdown-label" style="font-weight: 700;">⚙️ Operations Infrastructure</div>
+                    <div style="font-size: 0.95rem; color: #64748b; margin-top: 0.25rem;">
+                        Inventory tracking systems, professional packaging/labeling, office equipment, communication systems, secure delivery equipment
+                    </div>
+                </div>
+                <span class="breakdown-amount">$18,000</span>
+            </div>
+            
+            <div class="breakdown-item">
+                <div>
+                    <div class="breakdown-label" style="font-weight: 700;">📋 Licenses & Insurance Contracts</div>
+                    <div style="font-size: 0.95rem; color: #64748b; margin-top: 0.25rem;">
+                        CPAP accreditation, commercial insurance applications (UHC, Aetna, BCBS), expanded state licenses, business insurance, HIPAA compliance
+                    </div>
+                </div>
+                <span class="breakdown-amount">$24,000</span>
+            </div>
+            
+            <div class="breakdown-item">
+                <div>
+                    <div class="breakdown-label" style="font-weight: 700;">📢 Marketing & Launch</div>
+                    <div style="font-size: 0.95rem; color: #64748b; margin-top: 0.25rem;">
+                        Multilingual Facebook campaigns (Russian/Uzbek/Farsi/Tajik), physician marketing materials, community launch event, professional branding
+                    </div>
+                </div>
+                <span class="breakdown-amount">$10,000</span>
+            </div>
+            
+            <div class="breakdown-item">
+                <span class="breakdown-label"><strong>TOTAL INVESTMENT</strong></span>
+                <span class="breakdown-amount" style="font-size: 2rem;">$250,000</span>
+            </div>
+        </div>
+        
+        <div style="margin-top: 4rem;">
+            <h3 style="font-size: 2rem; text-align: center; margin-bottom: 2rem;">The Three Multipliers</h3>
+            
+            <div class="comparison-chart">
+                <div class="chart-column" style="border: 3px solid #10b981;">
+                    <div class="chart-header">
+                        <div class="chart-title" style="color: #10b981;">1. Commercial Insurance Multiplier</div>
+                        <div style="font-size: 1.1rem; color: #64748b; margin-top: 0.5rem;"><strong>THE MOST IMPORTANT $24K</strong></div>
+                    </div>
+                    
+                    <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0;">
+                        <div style="font-weight: 700; color: #059669; margin-bottom: 1rem; font-size: 1.1rem;">Rate Comparison:</div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #d1fae5;">
+                            <span>Medicare hospital bed:</span>
+                            <strong>$72/month</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #d1fae5;">
+                            <span>Commercial hospital bed:</span>
+                            <strong style="color: #10b981; font-size: 1.25rem;">$250/month</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 1.1rem;">
+                            <span>Difference per patient:</span>
+                            <strong style="color: #10b981;">$178/month (3.5x!)</strong>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #fef3c7; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #f59e0b;">
+                        <p style="font-weight: 600; color: #92400e; margin-bottom: 0.75rem;">Financial Impact:</p>
+                        <p style="color: #78350f; margin-bottom: 0.5rem;">50 patients with commercial insurance:</p>
+                        <p style="color: #78350f; margin-bottom: 0.5rem;">$178/month × 50 patients = <strong>$8,900/month</strong></p>
+                        <p style="color: #78350f; margin-bottom: 0.5rem;"><strong>$106,800/year additional revenue</strong></p>
+                        <p style="color: #78350f; font-weight: 700; font-size: 1.15rem; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #f59e0b;">
+                            $24K investment → $239K additional profit/year<br>
+                            = 10x ROI in Year 1 alone
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="chart-column" style="border: 3px solid #667eea;">
+                    <div class="chart-header">
+                        <div class="chart-title" style="color: #667eea;">2. Multilingual Market Multiplier</div>
+                    </div>
+                    
+                    <div style="padding: 1.5rem 0;">
+                        <div style="font-weight: 700; margin-bottom: 1rem;">Market Size:</div>
+                        <ul style="list-style: none; font-size: 1.05rem; color: #475569; line-height: 1.8;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                <strong>500,000+</strong> Russian/Uzbek/Farsi/Tajik speakers in NYC metro
+                            </li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                <strong>15-20% are 65+</strong> (75,000-100,000 seniors)
+                            </li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                Current multilingual DME penetration: <strong><5%</strong>
+                            </li>
+                            <li style="padding: 0.5rem 0;">
+                                <strong>Zero broad competition</strong> for 70,000+ potential customers
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: #eef2ff; padding: 1.5rem; border-radius: 12px; margin-top: 1rem;">
+                        <div style="font-weight: 700; color: #667eea; margin-bottom: 1rem;">Customer Acquisition Economics:</div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid #c7d2fe;">
+                            <span>English-only DME CAC:</span>
+                            <strong style="color: #ef4444;">$300-500</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Multilingual DME CAC:</span>
+                            <strong style="color: #10b981;">$50-100 (5x cheaper!)</strong>
+                        </div>
+                        <p style="margin-top: 1rem; font-size: 0.95rem; color: #3730a3;">
+                            Word-of-mouth marketing through community trust. First patient tells 5 friends. Exponential organic growth.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="chart-column" style="border: 3px solid #f59e0b;">
+                    <div class="chart-header">
+                        <div class="chart-title" style="color: #f59e0b;">3. Same-Day Delivery Multiplier</div>
+                    </div>
+                    
+                    <div style="padding: 1.5rem 0;">
+                        <ul style="list-style: none; font-size: 1.05rem; color: #475569; line-height: 1.8;">
+                            <li style="padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">
+                                <strong>2 vans</strong> = 10-14 deliveries per day
+                            </li>
+                            <li style="padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">
+                                Delivery time: <strong>2-4 hours</strong> vs competitors <span style="color: #ef4444;">7-14 days</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">
+                                Deep inventory enables <strong>complete orders</strong> (not partial)
+                            </li>
+                            <li style="padding: 0.75rem 0;">
+                                Doubles revenue capacity vs single van
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: #fef3c7; padding: 1.5rem; border-radius: 12px; margin-top: 1rem;">
+                        <div style="font-weight: 700; color: #92400e; margin-bottom: 1rem;">Capacity Economics:</div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid #fde68a;">
+                            <span>Single van revenue cap:</span>
+                            <strong style="color: #ef4444;">~$400K/year</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Two van capacity:</span>
+                            <strong style="color: #10b981;">~$850K/year</strong>
+                        </div>
+                        <p style="margin-top: 1rem; font-size: 0.95rem; color: #78350f;">
+                            Second van costs $18K. Generates $450K additional revenue capacity. 25x ROI on delivery infrastructure.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Year 1 Performance -->
+    <section class="section" style="background: #f8fafc;">
+        <div class="section-header">
+            <h2 class="section-title">Year 1 Financial Performance</h2>
+            <p class="section-subtitle">How Holistic Medical Supply becomes profitable and funds Phase 2</p>
+        </div>
+        
+        <div style="background: white; border-radius: 24px; padding: 3rem; box-shadow: 0 20px 60px rgba(0,0,0,0.1); margin-bottom: 3rem;">
+            <h3 style="font-size: 2rem; margin-bottom: 2rem; text-align: center;">Revenue Build (Monthly)</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.25rem;">
+                <div style="text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 12px;">
+                    <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 0.5rem;">Month 1</div>
+                    <div style="font-size: 1.75rem; font-weight: 800; color: var(--primary);">$10K</div>
+                    <div style="font-size: 0.85rem; color: #64748b; margin-top: 0.25rem;">Soft launch</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 12px;">
+                    <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 0.5rem;">Month 2</div>
+                    <div style="font-size: 1.75rem; font-weight: 800; color: var(--primary);">$30K</div>
+                    <div style="font-size: 0.85rem; color: #64748b; margin-top: 0.25rem;">Marketing begins</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 12px;">
+                    <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 0.5rem;">Month 3</div>
+                    <div style="font-size: 1.75rem; font-weight: 800; color: var(--primary);">$45K</div>
+                    <div style="font-size: 0.85rem; color: #64748b; margin-top: 0.25rem;">Word-of-mouth</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 12px;">
+                    <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 0.5rem;">Month 4</div>
+                    <div style="font-size: 1.75rem; font-weight: 800; color: var(--primary);">$55K</div>
+                    <div style="font-size: 0.85rem; color: #64748b; margin-top: 0.25rem;">Scaling up</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 12px;">
+                    <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 0.5rem;">Month 5</div>
+                    <div style="font-size: 1.75rem; font-weight: 800; color: var(--primary);">$65K</div>
+                    <div style="font-size: 0.85rem; color: #64748b; margin-top: 0.25rem;">Momentum</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 12px;">
+                    <div style="font-size: 0.9rem; color: #64748b; margin-bottom: 0.5rem;">Month 6</div>
+                    <div style="font-size: 1.75rem; font-weight: 800; color: var(--primary);">$75K</div>
+                    <div style="font-size: 0.85rem; color: #64748b; margin-top: 0.25rem;">Pre-commercial</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem; background: #dcfce7; border-radius: 12px;">
+                    <div style="font-size: 0.9rem; color: #065f46; margin-bottom: 0.5rem;">Month 7</div>
+                    <div style="font-size: 1.75rem; font-weight: 800; color: #059669;">$80K</div>
+                    <div style="font-size: 0.85rem; color: #065f46; margin-top: 0.25rem;">Commercial starts</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem; background: #dcfce7; border-radius: 12px;">
+                    <div style="font-size: 0.9rem; color: #065f46; margin-bottom: 0.5rem;">Month 8</div>
+                    <div style="font-size: 1.75rem; font-weight: 800; color: #059669;">$80K</div>
+                    <div style="font-size: 0.85rem; color: #065f46; margin-top: 0.25rem;">Ramping</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem; background: #dcfce7; border-radius: 12px;">
+                    <div style="font-size: 0.9rem; color: #065f46; margin-bottom: 0.5rem;">Month 9</div>
+                    <div style="font-size: 1.75rem; font-weight: 800; color: #059669;">$80K</div>
+                    <div style="font-size: 0.85rem; color: #065f46; margin-top: 0.25rem;">Stabilizing</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem; background: #bbf7d0; border-radius: 12px; border: 2px solid #10b981;">
+                    <div style="font-size: 0.9rem; color: #065f46; margin-bottom: 0.5rem;">Month 10</div>
+                    <div style="font-size: 1.75rem; font-weight: 800; color: #059669;">$90K</div>
+                    <div style="font-size: 0.85rem; color: #065f46; margin-top: 0.25rem;">Full commercial</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem; background: #bbf7d0; border-radius: 12px; border: 2px solid #10b981;">
+                    <div style="font-size: 0.9rem; color: #065f46; margin-bottom: 0.5rem;">Month 11</div>
+                    <div style="font-size: 1.75rem; font-weight: 800; color: #059669;">$90K</div>
+                    <div style="font-size: 0.85rem; color: #065f46; margin-top: 0.25rem;">Peak operations</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem; background: #bbf7d0; border-radius: 12px; border: 2px solid #10b981;">
+                    <div style="font-size: 0.9rem; color: #065f46; margin-bottom: 0.5rem;">Month 12</div>
+                    <div style="font-size: 1.75rem; font-weight: 800; color: #059669;">$90K</div>
+                    <div style="font-size: 0.85rem; color: #065f46; margin-top: 0.25rem;">Run rate established</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; padding: 2rem; background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-radius: 16px; text-align: center;">
+                <div style="font-size: 1.25rem; color: #065f46; margin-bottom: 0.5rem;">Year 1 Total Revenue</div>
+                <div style="font-size: 3.5rem; font-weight: 900; color: #059669;">$790K</div>
+                <div style="font-size: 1rem; color: #065f46; margin-top: 0.5rem;">10+30+45+55+65+75+80+80+80+90+90+90 = $790K</div>
+            </div>
+        </div>
+        
+        <div style="background: white; border-radius: 24px; padding: 3rem; box-shadow: 0 20px 60px rgba(0,0,0,0.1);">
+            <h3 style="font-size: 2rem; margin-bottom: 2rem; text-align: center;">Year 1 Profit & Loss</h3>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="display: flex; justify-content: space-between; padding: 1.25rem 0; border-bottom: 2px solid #e2e8f0;">
+                    <span style="font-size: 1.1rem; font-weight: 600;">Revenue</span>
+                    <span style="font-size: 1.1rem; font-weight: 700; color: var(--primary);">$790K</span>
+                </div>
+                
+                <div style="margin: 1.5rem 0; padding: 1.5rem; background: #f8fafc; border-radius: 12px;">
+                    <div style="font-weight: 700; margin-bottom: 1rem;">Cost of Goods Sold:</div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                        <span>Products (40% - VGM volume discounts):</span>
+                        <span>$316K</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
+                        <span>Delivery/labor (10%):</span>
+                        <span>$79K</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; margin-top: 0.5rem; border-top: 2px solid #cbd5e1; font-weight: 700;">
+                        <span>Total COGS (50%):</span>
+                        <span>$395K</span>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; padding: 1.25rem 0; border-bottom: 2px solid #e2e8f0; background: #f0fdf4; margin: 0 -1rem; padding-left: 1rem; padding-right: 1rem; border-radius: 8px;">
+                    <span style="font-size: 1.15rem; font-weight: 700;">Gross Profit (50%):</span>
+                    <span style="font-size: 1.15rem; font-weight: 800; color: #059669;">$395K</span>
+                </div>
+                
+                <div style="margin: 1.5rem 0; padding: 1.5rem; background: #f8fafc; border-radius: 12px;">
+                    <div style="font-weight: 700; margin-bottom: 1rem;">Operating Expenses:</div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                        <span>Technology (billing, referral systems, automation):</span>
+                        <span>$34K</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                        <span>Warehouse (full year lease):</span>
+                        <span>$36K</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                        <span>Insurance/compliance:</span>
+                        <span>$18K</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                        <span>Marketing:</span>
+                        <span>$15K</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
+                        <span>Utilities/other:</span>
+                        <span>$12K</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; margin-top: 0.5rem; border-top: 2px solid #cbd5e1; font-weight: 700;">
+                        <span>Total OpEx (15%):</span>
+                        <span>$115K</span>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; padding: 1.25rem 0; border-bottom: 2px solid #e2e8f0;">
+                    <span style="font-size: 1.15rem; font-weight: 700;">EBITDA (35%):</span>
+                    <span style="font-size: 1.15rem; font-weight: 800; color: #059669;">$280K</span>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; padding: 1.25rem 0; border-bottom: 2px solid #e2e8f0;">
+                    <span>Interest/depreciation:</span>
+                    <span>$10K</span>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; padding: 1.5rem; margin-top: 1rem; background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-radius: 12px; border: 3px solid #10b981;">
+                    <span style="font-size: 1.5rem; font-weight: 800; color: #065f46;">Net Profit (34%):</span>
+                    <span style="font-size: 2rem; font-weight: 900; color: #059669;">$270K</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="roi-highlight" style="margin-top: 3rem;">
+            <div class="roi-number">$270K</div>
+            <div class="roi-label">Year 1 Net Profit = Entire Investment Returned + $20K</div>
+            <p style="margin-top: 1.5rem; font-size: 1.2rem; line-height: 1.6;">
+                The company is now worth $2.7M (10x multiple on $270K profit).<br>
+                <strong>AND we have $270K cash to fund MedBazaar platform.</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- MedBazaar Evolution -->
+    <section class="section" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white;">
+        <div class="section-header">
+            <h2 class="section-title" style="color: white; -webkit-text-fill-color: white;">Phase 2: Evolution to MedBazaar</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">The Amazon of Medical Equipment</p>
+        </div>
+        
+        <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 3rem; border-radius: 20px; max-width: 1100px; margin: 0 auto; margin-bottom: 3rem;">
+            <h3 style="font-size: 2rem; margin-bottom: 2rem; text-align: center;">Why a DME Operator MUST Build This Platform</h3>
+            
+            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
+                <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 1rem;">
+                    <strong>Only someone who operates a DME company can build a credible marketplace platform.</strong> Here's why:
+                </p>
+                <ul style="list-style: none; font-size: 1.1rem; line-height: 2; margin-top: 1.5rem;">
+                    <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        ✓ <strong>We understand the pain points.</strong> We know what DME companies struggle with because we ARE a DME company.
+                    </li>
+                    <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        ✓ <strong>Instant credibility with vendors.</strong> "We built software for ourselves, now offering to you" is infinitely more credible than "tech company built something for your industry."
+                    </li>
+                    <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        ✓ <strong>Built-in first customer.</strong> We test all features on ourselves before rolling out to other DMEs. Real-world validation.
+                    </li>
+                    <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        ✓ <strong>Deep industry knowledge.</strong> Billing systems, insurance contracts, product catalogs, coverage requirements—we know it all.
+                    </li>
+                    <li style="padding: 0.75rem 0;">
+                        ✓ <strong>Self-funded evolution.</strong> Year 1 profits ($270K) fund platform development. No need for dilutive VC funding.
+                    </li>
+                </ul>
+            </div>
+            
+            <div style="background: rgba(251, 191, 36, 0.2); padding: 2rem; border-radius: 12px; border: 2px solid #fbbf24;">
+                <h4 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fef3c7;">The Strategic Insight</h4>
+                <p style="font-size: 1.15rem; line-height: 1.8;">
+                    Most marketplace platforms fail because founders don't understand the industry deeply enough. We're not outsiders trying to "disrupt" DME. <strong>We're insiders who know exactly what the industry needs</strong> because we experience the problems every single day.
+                </p>
+            </div>
+        </div>
+        
+        <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 3rem; border-radius: 20px; max-width: 1000px; margin: 0 auto;">
+            <h3 style="font-size: 2rem; margin-bottom: 2rem; text-align: center;">How the Platform Works</h3>
+            
+            <div style="display: grid; gap: 1.5rem;">
+                <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; display: flex; align-items: flex-start; gap: 1.5rem;">
+                    <div style="background: white; color: #4facfe; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; flex-shrink: 0;">1</div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 1.15rem; margin-bottom: 0.5rem;">Other DME Companies List Products</div>
+                        <p style="margin: 0; font-size: 1.05rem; opacity: 0.95;">Small DME companies have terrible/no websites. We offer them: "List your products on our platform. We handle tech, marketing, payments. You handle fulfillment."</p>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; display: flex; align-items: flex-start; gap: 1.5rem;">
+                    <div style="background: white; color: #4facfe; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; flex-shrink: 0;">2</div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 1.15rem; margin-bottom: 0.5rem;">Patients Shop & Compare</div>
+                        <p style="margin: 0; font-size: 1.05rem; opacity: 0.95;">Patients search for "hospital bed Brooklyn," see listings from 5 vendors, compare prices ($200-$300/month), read reviews, choose vendor.</p>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; display: flex; align-items: flex-start; gap: 1.5rem;">
+                    <div style="background: white; color: #4facfe; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; flex-shrink: 0;">3</div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 1.15rem; margin-bottom: 0.5rem;">Patient Orders From Chosen Vendor</div>
+                        <p style="margin: 0; font-size: 1.05rem; opacity: 0.95;">Patient clicks "Order from XYZ Medical Supply" → payment processed → order sent to vendor.</p>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; display: flex; align-items: flex-start; gap: 1.5rem;">
+                    <div style="background: white; color: #4facfe; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; flex-shrink: 0;">4</div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 1.15rem; margin-bottom: 0.5rem;">Vendor Delivers (They Do The Work)</div>
+                        <p style="margin: 0; font-size: 1.05rem; opacity: 0.95;">The chosen DME company delivers the equipment, handles customer service, manages the rental.</p>
+                    </div>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 1.5rem; border-radius: 12px; display: flex; align-items: flex-start; gap: 1.5rem; border: 3px solid white;">
+                    <div style="background: white; color: #10b981; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; flex-shrink: 0;">💰</div>
+                    <div>
+                        <div style="font-weight: 800; font-size: 1.25rem; margin-bottom: 0.5rem;">We Take 15% Commission</div>
+                        <p style="margin: 0; font-size: 1.05rem; font-weight: 600;">No inventory. No delivery. No customer service. Just 15% of every transaction for providing the platform.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 4rem; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 3rem; border-radius: 20px;">
+            <h3 style="font-size: 2rem; text-align: center; margin-bottom: 2rem;">Why Vendors Say Yes</h3>
+            
+            <div style="max-width: 900px; margin: 0 auto;">
+                <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 2rem;">
+                    Small DME companies are desperate. They have terrible websites (or none). They can't afford marketing. They're losing to Amazon and large chains. Healthcare reform is killing their insurance-based business model.
+                </p>
+                
+                <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 12px;">
+                    <p style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem;">Our pitch to them:</p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; font-style: italic; padding-left: 1.5rem; border-left: 4px solid white;">
+                        "We have 10,000 Russian/Uzbek customers shopping for medical equipment online. List your products on our platform. We handle all marketing, tech, and payments. You just fulfill orders. 15% commission. Zero upfront cost."
+                    </p>
+                </div>
+                
+                <div style="margin-top: 2rem; background: rgba(16, 185, 129, 0.2); padding: 2rem; border-radius: 12px; border: 2px solid #10b981;">
+                    <p style="font-size: 1.15rem; line-height: 1.8; font-weight: 600;">
+                        Why they say yes:<br><br>
+                        ✓ Zero risk (no upfront cost)<br>
+                        ✓ Additional revenue stream (customers they can't reach)<br>
+                        ✓ Direct-to-consumer channel ready (for when reform hits)<br>
+                        ✓ They're desperate
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Economics -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Platform Economics vs Traditional DME</h2>
+            <p class="section-subtitle">Why marketplace businesses are worth 50-100x more than operators</p>
+        </div>
+        
+        <div class="comparison-chart">
+            <div class="chart-column">
+                <div class="chart-header">
+                    <div class="chart-title" style="color: #64748b;">Traditional DME (Holistic)</div>
+                </div>
+                <div style="padding: 1.5rem 0;">
+                    <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">
+                        <span style="font-weight: 500;">Buy inventory:</span>
+                        <span style="font-weight: 700; color: var(--danger);">$100K</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">
+                        <span style="font-weight: 500;">Deliver products:</span>
+                        <span style="font-weight: 700; color: var(--danger);">Manual labor</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">
+                        <span style="font-weight: 500;">Customer service:</span>
+                        <span style="font-weight: 700; color: var(--danger);">Staff time</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">
+                        <span style="font-weight: 500;">Profit margins:</span>
+                        <span style="font-weight: 700;">15-20%</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.75rem 0;">
+                        <span style="font-weight: 500;">Scaling:</span>
+                        <span style="font-weight: 700; color: var(--warning);">Linear (more revenue = more work)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-column" style="border: 3px solid #10b981;">
+                <div class="chart-header">
+                    <div class="chart-title" style="color: #10b981;">Platform (MedBazaar)</div>
+                </div>
+                <div style="padding: 1.5rem 0;">
+                    <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">
+                        <span style="font-weight: 500;">No inventory:</span>
+                        <span style="font-weight: 700; color: #10b981;">$0 (vendors hold stock)</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">
+                        <span style="font-weight: 500;">No delivery:</span>
+                        <span style="font-weight: 700; color: #10b981;">Vendors handle</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">
+                        <span style="font-weight: 500;">Minimal customer service:</span>
+                        <span style="font-weight: 700; color: #10b981;">Vendors handle</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">
+                        <span style="font-weight: 500;">Profit margins:</span>
+                        <span style="font-weight: 800; color: #10b981; font-size: 1.25rem;">85%</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.75rem 0;">
+                        <span style="font-weight: 500;">Scaling:</span>
+                        <span style="font-weight: 800; color: #10b981;">Exponential (more revenue = same work)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: white; border-radius: 24px; padding: 3rem; box-shadow: 0 20px 60px rgba(0,0,0,0.1); margin-top: 3rem;">
+            <h3 style="font-size: 2rem; margin-bottom: 2rem; text-align: center;">This is Why:</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div style="text-align: center; padding: 2rem; background: #f0fdf4; border-radius: 16px;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🛒</div>
+                    <div style="font-size: 1.5rem; font-weight: 800; color: #059669; margin-bottom: 0.5rem;">Amazon</div>
+                    <div style="font-size: 2rem; font-weight: 900; color: #10b981;">$2 Trillion</div>
+                </div>
+                
+                <div style="text-align: center; padding: 2rem; background: #f0fdf4; border-radius: 16px;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🏪</div>
+                    <div style="font-size: 1.5rem; font-weight: 800; color: #059669; margin-bottom: 0.5rem;">eBay</div>
+                    <div style="font-size: 2rem; font-weight: 900; color: #10b981;">$30 Billion</div>
+                </div>
+                
+                <div style="text-align: center; padding: 2rem; background: #f0fdf4; border-radius: 16px;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🚗</div>
+                    <div style="font-size: 1.5rem; font-weight: 800; color: #059669; margin-bottom: 0.5rem;">Uber</div>
+                    <div style="font-size: 2rem; font-weight: 900; color: #10b981;">$150 Billion</div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 2rem; font-size: 1.2rem; text-align: center; color: #475569; line-height: 1.8;">
+                Platforms capture most of the value in a market.<br>
+                Traditional operators fight for scraps.
+            </p>
+        </div>
+        
+        <div style="margin-top: 3rem;">
+            <h3 style="font-size: 2rem; text-align: center; margin-bottom: 2rem;">MedBazaar Financial Projections</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center;">
+                    <div style="font-size: 1.25rem; color: #64748b; margin-bottom: 1rem;">Year 2 (2027)</div>
+                    <div style="font-size: 1.1rem; color: #64748b; margin-bottom: 0.5rem;">20-30 vendors</div>
+                    <div style="font-size: 1.1rem; color: #64748b; margin-bottom: 1.5rem;">$2-3M GMV</div>
+                    <div style="font-size: 3rem; font-weight: 900; color: #10b981; margin-bottom: 0.5rem;">$300-450K</div>
+                    <div style="font-size: 1.1rem; color: #64748b;">Net Profit (75-80% margins)</div>
+                </div>
+                
+                <div style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center;">
+                    <div style="font-size: 1.25rem; color: #64748b; margin-bottom: 1rem;">Year 3 (2028)</div>
+                    <div style="font-size: 1.1rem; color: #64748b; margin-bottom: 0.5rem;">50+ vendors</div>
+                    <div style="font-size: 1.1rem; color: #64748b; margin-bottom: 1.5rem;">$8-12M GMV</div>
+                    <div style="font-size: 3rem; font-weight: 900; color: #10b981; margin-bottom: 0.5rem;">$1-2.2M</div>
+                    <div style="font-size: 1.1rem; color: #64748b;">Net Profit (85% margins)</div>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); padding: 2.5rem; border-radius: 20px; box-shadow: 0 20px 60px rgba(251, 191, 36, 0.4); text-align: center; border: 3px solid #fef3c7;">
+                    <div style="font-size: 1.25rem; color: #fef3c7; margin-bottom: 1rem; font-weight: 700;">IF REFORM HAPPENS</div>
+                    <div style="font-size: 1.1rem; color: #fef3c7; margin-bottom: 0.5rem;">Year 3 (2028)</div>
+                    <div style="font-size: 1.1rem; color: #fef3c7; margin-bottom: 1.5rem;">$30-50M GMV</div>
+                    <div style="font-size: 3rem; font-weight: 900; color: white; margin-bottom: 0.5rem;">$4-9.5M</div>
+                    <div style="font-size: 1.1rem; color: #fef3c7; margin-bottom: 1rem;">Net Profit</div>
+                    <div style="font-size: 1.3rem; font-weight: 800; color: white; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px solid rgba(255,255,255,0.3);">
+                        Platform Value: $50-100M
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Combined 5-Year Projections -->
+    <section class="section" style="background: #f8fafc;">
+        <div class="section-header">
+            <h2 class="section-title">Combined 5-Year Financial Projections</h2>
+            <p class="section-subtitle">Holistic Medical Supply + MedBazaar Platform</p>
+        </div>
+        
+        <div class="financial-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Holistic Revenue</th>
+                        <th>MedBazaar Revenue</th>
+                        <th>Total Profit</th>
+                        <th>Company Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: #f0fdf4;">
+                        <td><strong>Year 1 (2026)</strong></td>
+                        <td>$790K</td>
+                        <td>$0</td>
+                        <td style="font-weight: 700; color: #10b981;">$270K</td>
+                        <td style="font-weight: 700; color: #667eea;">$2.7M</td>
+                    </tr>
+                    <tr style="background: #dcfce7;">
+                        <td><strong>Year 2 (2027)</strong></td>
+                        <td>$1.2M</td>
+                        <td>$300K</td>
+                        <td style="font-weight: 700; color: #10b981;">$550K</td>
+                        <td style="font-weight: 700; color: #667eea;">$7M</td>
+                    </tr>
+                    <tr style="background: #bbf7d0;">
+                        <td><strong>Year 3 (2028)</strong></td>
+                        <td>$1.5M</td>
+                        <td>$1.2M</td>
+                        <td style="font-weight: 700; color: #10b981; font-size: 1.15rem;">$1.4M</td>
+                        <td style="font-weight: 700; color: #667eea; font-size: 1.15rem;">$18M</td>
+                    </tr>
+                    <tr style="background: #86efac;">
+                        <td><strong>Year 5 (2030)</strong></td>
+                        <td>$2M</td>
+                        <td>$2M</td>
+                        <td style="font-weight: 800; color: #10b981; font-size: 1.25rem;">$2M</td>
+                        <td style="font-weight: 800; color: #667eea; font-size: 1.25rem;">$25M</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="roi-highlight" style="margin-top: 2rem;">
+            <div class="roi-number">100x</div>
+            <div class="roi-label">Conservative Scenario (No Healthcare Reform)</div>
+            <p style="margin-top: 1.5rem; font-size: 1.2rem;">$250K investment → $25M company value in 5 years</p>
+        </div>
+        
+        <div style="margin-top: 3rem;">
+            <h3 style="font-size: 2.5rem; text-align: center; margin-bottom: 2rem;">IF Healthcare Reform Happens (65-75% Probability)</h3>
+            
+            <div class="financial-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Holistic Revenue</th>
+                            <th>MedBazaar Revenue</th>
+                            <th>Total Profit</th>
+                            <th>Company Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #f0fdf4;">
+                            <td><strong>Year 1 (2026)</strong></td>
+                            <td>$850K</td>
+                            <td>$0</td>
+                            <td style="font-weight: 700; color: #10b981;">$290K</td>
+                            <td style="font-weight: 700; color: #667eea;">$3M</td>
+                        </tr>
+                        <tr style="background: #dcfce7;">
+                            <td><strong>Year 2 (2027)</strong></td>
+                            <td>$1.5M</td>
+                            <td>$800K</td>
+                            <td style="font-weight: 700; color: #10b981;">$1M</td>
+                            <td style="font-weight: 700; color: #667eea;">$18M</td>
+                        </tr>
+                        <tr style="background: #bbf7d0;">
+                            <td><strong>Year 3 (2028)</strong></td>
+                            <td>$2M</td>
+                            <td>$4.5M</td>
+                            <td style="font-weight: 800; color: #10b981; font-size: 1.15rem;">$4M</td>
+                            <td style="font-weight: 800; color: #667eea; font-size: 1.15rem;">$65M</td>
+                        </tr>
+                        <tr style="background: #86efac;">
+                            <td><strong>Year 5 (2030)</strong></td>
+                            <td>$3M</td>
+                            <td>$15M</td>
+                            <td style="font-weight: 900; color: #10b981; font-size: 1.25rem;">$13M</td>
+                            <td style="font-weight: 900; color: #667eea; font-size: 1.25rem;">$150M</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="roi-highlight" style="margin-top: 2rem; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div class="roi-number">600x</div>
+                <div class="roi-label">Optimistic Scenario (With Healthcare Reform)</div>
+                <p style="margin-top: 1.5rem; font-size: 1.2rem;">$250K investment → $150M company value in 5 years</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Factors -->
+    <section class="success-factors">
+        <div class="section-header">
+            <h2 class="section-title" style="color: white; -webkit-text-fill-color: white;">Why This Works</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Five structural advantages that guarantee success</p>
+        </div>
+        
+        <div class="factor-grid">
+            <div class="factor-card">
+                <div class="factor-number">1</div>
+                <h3 class="factor-title">Multilingual Moat</h3>
+                <p class="factor-description">500,000+ Russian/Uzbek/Farsi/Tajik speakers in NYC. Current multilingual DME penetration <5%. Zero broad competitors. 2-3 year head start before anyone can copy (need community trust, operational knowledge, cultural understanding). This market segment is OURS.</p>
+            </div>
+            
+            <div class="factor-card">
+                <div class="factor-number">2</div>
+                <h3 class="factor-title">Commercial Insurance = 3x Revenue</h3>
+                <p class="factor-description">$24K investment in facility + applications generates $239K additional profit annually. That's a 10x ROI on this component alone. Competitors stuck at Medicare rates ($72/month) while we earn commercial rates ($250/month). Insurmountable advantage.</p>
+            </div>
+            
+            <div class="factor-card">
+                <div class="factor-number">3</div>
+                <h3 class="factor-title">Perfect Timing</h3>
+                <p class="factor-description">Healthcare reform 65-75% likely within 12 months. Traditional DME can't adapt (no e-commerce, no price transparency, no direct-to-consumer infrastructure). We're building for the future market BEFORE it arrives. First-mover advantage = market dominance.</p>
+            </div>
+            
+            <div class="factor-card">
+                <div class="factor-number">4</div>
+                <h3 class="factor-title">Platform Economics</h3>
+                <p class="factor-description">MedBazaar scales without scaling operations. 85% margins vs 15% for traditional DME. No inventory, no delivery, no customer service. Just technology and transactions. This is why Amazon is worth $2 trillion while local retailers struggle.</p>
+            </div>
+            
+            <div class="factor-card">
+                <div class="factor-number">5</div>
+                <h3 class="factor-title">Operator-Built Platform</h3>
+                <p class="factor-description">Only a DME operator can build a credible marketplace. We understand the pain points because we live them. Instant credibility with vendors. Built-in first customer (ourselves). Self-funded from Year 1 profits. No dilutive VC funding required.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section">
+        <h2 class="cta-title">The Decision</h2>
+        
+        <div style="background: rgba(239, 68, 68, 0.2); backdrop-filter: blur(10px); padding: 2rem; border-radius: 16px; border: 2px solid rgba(239, 68, 68, 0.5); margin-bottom: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+            <div style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem;">⏰ WE MUST MOVE IMMEDIATELY</div>
+            <div style="font-size: 1.15rem; line-height: 1.8;">
+                <p style="margin-bottom: 1rem;">Vendor applications: <strong>7 days</strong></p>
+                <p style="margin-bottom: 1rem;">Van delivery lead time: <strong>4 weeks</strong></p>
+                <p style="margin-bottom: 1rem;">Commercial insurance applications: <strong>6-9 month approval process</strong></p>
+                <p style="margin-bottom: 1rem;">Affordable Care Act subsidies expire: <strong>46 days</strong></p>
+                <p style="font-weight: 700; margin-top: 1.5rem;">Every week of delay = 1 week later we can earn 3x commercial rates.<br>Every week of delay = smaller market share when reform hits.</p>
+            </div>
+        </div>
+        
+        <div style="max-width: 1100px; margin: 0 auto; margin-bottom: 4rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
+                <div style="background: rgba(239, 68, 68, 0.2); backdrop-filter: blur(10px); padding: 3rem; border-radius: 20px; border: 3px solid rgba(239, 68, 68, 0.5);">
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">$50K Path</h3>
+                    <div style="font-size: 1.25rem; margin-bottom: 1.5rem; opacity: 0.9;">Traditional DME</div>
+                    <div style="font-size: 1.1rem; line-height: 1.8;">
+                        <p>✗ Minimal inventory (lose sales)</p>
+                        <p>✗ Single vehicle (capacity limited)</p>
+                        <p>✗ Degraded warehouse (fails audits)</p>
+                        <p>✗ Medicare only (low rates)</p>
+                        <p>✗ Manual operations (can't scale)</p>
+                        <p>✗ English only (miss 500K market)</p>
+                    </div>
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid rgba(255,255,255,0.3);">
+                        <div style="font-size: 1.25rem; margin-bottom: 0.5rem;">5-Year Outcome:</div>
+                        <div style="font-size: 3rem; font-weight: 800; color: #fca5a5;">-100%</div>
+                        <div style="font-size: 1.1rem; margin-top: 0.5rem;">Bankruptcy. Total loss.</div>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(16, 185, 129, 0.2); backdrop-filter: blur(10px); padding: 3rem; border-radius: 20px; border: 3px solid rgba(16, 185, 129, 0.5);">
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">$250K Path</h3>
+                    <div style="font-size: 1.25rem; margin-bottom: 1.5rem; opacity: 0.9;">Modern DME → Platform</div>
+                    <div style="font-size: 1.1rem; line-height: 1.8;">
+                        <p>✓ Deep inventory (complete orders)</p>
+                        <p>✓ 2 vans (2x capacity)</p>
+                        <p>✓ Professional facility (passes audits)</p>
+                        <p>✓ Commercial insurance (3x rates)</p>
+                        <p>✓ Modern automation (5x productivity)</p>
+                        <p>✓ Multilingual (500K untapped market)</p>
+                        <p>✓ Year 1 profits fund platform</p>
+                        <p>✓ 85% margin marketplace business</p>
+                    </div>
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid rgba(255,255,255,0.3);">
+                        <div style="font-size: 1.25rem; margin-bottom: 0.5rem;">5-Year Outcome:</div>
+                        <div style="font-size: 3rem; font-weight: 800; color: #a7f3d0;">100-600x</div>
+                        <div style="font-size: 1.1rem; margin-top: 0.5rem;">$25-150M Company Value</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-grid">
+            <div class="cta-card">
+                <div class="cta-number">$250,000</div>
+                <div class="cta-label">Investment Required</div>
+            </div>
+            <div class="cta-card">
+                <div class="cta-number">70-75%</div>
+                <div class="cta-label">Success Probability</div>
+            </div>
+            <div class="cta-card">
+                <div class="cta-number">100-600x</div>
+                <div class="cta-label">Potential Return</div>
+            </div>
+            <div class="cta-card">
+                <div class="cta-number">3-5</div>
+                <div class="cta-label">Years to Exit</div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 4rem; font-size: 1.5rem; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+            <p style="margin-bottom: 1.5rem;">The question isn't "will this work?"</p>
+            <p style="font-size: 2rem; font-weight: 700; margin-bottom: 2rem;">The question is "how big will this get?"</p>
+            
+            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 2.5rem; border-radius: 16px; margin-top: 3rem; border: 2px solid rgba(255,255,255,0.3);">
+                <p style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem;">This Requires Full Commitment</p>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    You can't build a DME company with partial funding. You can't execute this strategy slowly. You can't have one foot in and one foot out.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                    We do this right with $250K and seize a once-in-a-lifetime opportunity to take advantage of a changing market environment—or we accept a very high risk of failure within 5 years as competitive bidding returns and traditional DME economics collapse.
+                </p>
+                <p style="font-size: 1.2rem; font-weight: 800; margin-top: 2rem; text-align: center;">
+                    The window is NOW. Let's build something extraordinary.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.section, .comparison-card, .problem-card, .factor-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
